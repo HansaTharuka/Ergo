@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/idLayout"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:orientation="vertical"
+    tools:context="org.techknights.ergo.UserAreas.SendSMSActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/idTextPhoneNo"
+       android:gravity="start"
+        android:textSize="20sp"
+        android:hint=""
+        android:inputType="phone" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/idTextMsg"
+        android:gravity="start"
+        android:textSize="20sp"
+        android:hint="Enter Your Message"
+        android:inputType="text" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Sms"
+        android:gravity="center"
+        android:id="@+id/idbtnStart"
+        android:onClick="sendSms"/>
+
+</LinearLayout>

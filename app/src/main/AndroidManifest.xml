@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.techknights.ergo">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".Login.app.AppController"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Firebaseactivity.FirebasemainActivity"></activity>
+
+        <activity android:name=".Login.activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".Login.activity.RegisterActivity"></activity>
+        <!-- Firebase Notifications -->
+        <service android:name=".Firebaseservice.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".Firebaseservice.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- ./Firebase Notifications -->
+
+        <activity
+            android:name=".Navigationdrawer.activity.AboutUs"
+            android:label="@string/activity_title_about_us" />
+        <activity
+            android:name=".Navigationdrawer.activity.PrivacyPolicy"
+            android:label="@string/activity_title_privacy_policy" />
+        <activity
+            android:name=".Navigationdrawer.activity.MainFragmentControlActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".UserAreas.CallActivity"/>
+        <activity android:name=".UserAreas.ProjectGroupMembersActivity"/>
+        <activity android:name=".UserAreas.ProjectGroupMemberSingleProfileActivity"/>
+        <activity android:name=".UserAreas.SendSMSActivity"/>
+        <activity android:name=".UserAreas.TaskSingleActivity"/>
+        <activity android:name=".UserAreas.TasksListActivity"/>
+
+    </application>
+
+</manifest>

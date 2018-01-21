@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/cardViewHome1">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/peopleCountTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/peoplelable1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="people"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/imageViewpeplebar1"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="100dp"
+                android:src="@drawable/ic_contacts_black_24dp" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+    android:id="@+id/cardViewHome2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignStart="@+id/cardViewHome1"
+    android:layout_below="@+id/cardViewHome1"
+    app:layout_constraintStart_toStartOf="@+id/linearLayout"
+    android:layout_alignLeft="@+id/cardViewHome1"
+    tools:ignore="UnknownId">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/taskCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tasklable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Task"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/imageViewTaskBar"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/ic_done_all_black_24dp" />
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewHome3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/cardViewHome1"
+        android:layout_below="@+id/cardViewHome2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        android:layout_alignLeft="@+id/cardViewHome1"
+        tools:ignore="UnknownId">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            tools:ignore="DuplicateIds">
+
+            <TextView
+                android:id="@+id/taskCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/tasklable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Task"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/imageViewTaskBar"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="100dp"
+                android:src="@drawable/ic_done_all_black_24dp" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>
