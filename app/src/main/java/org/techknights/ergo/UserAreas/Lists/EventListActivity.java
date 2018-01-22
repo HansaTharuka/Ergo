@@ -1,5 +1,6 @@
-package org.techknights.ergo.UserAreas;
+package org.techknights.ergo.UserAreas.Lists;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +11,11 @@ import android.widget.Toast;
 import org.techknights.ergo.Login.helper.SQLiteHandler;
 import org.techknights.ergo.R;
 import org.techknights.ergo.Retrofit.ApiClient;
-import org.techknights.ergo.Retrofit.GroupMembers;
-import org.techknights.ergo.Retrofit.TasksofUser;
+import org.techknights.ergo.Retrofit.ListViews.EventsOfUser;
+import org.techknights.ergo.Retrofit.ListViews.ProjectOfUser;
+import org.techknights.ergo.Retrofit.ListViews.TasksofUser;
+import org.techknights.ergo.UserAreas.Adapters.EventListAdapter;
+import org.techknights.ergo.UserAreas.Adapters.ProjectListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,30 +27,38 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TasksListActivity extends AppCompatActivity {
+public class EventListActivity extends AppCompatActivity {
 
-    private List<TasksofUser> tasksList;
-    private RecyclerView mRecyclerViewTasks;
-    private RecyclerView.Adapter mTaskssAdapter;
+    private List<EventsOfUser> eventsList;
+    private RecyclerView mRecyclerViewEvents;
+    private RecyclerView.Adapter mEventsAdapter;
     private SQLiteHandler db;
+
+    private ProgressDialog mRegProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tasks_list);
+        setContentView(R.layout.activity_event_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        tasksList = new ArrayList<>();
-        mRecyclerViewTasks = findViewById(R.id.recyclerViewTasks);
-        mRecyclerViewTasks.setHasFixedSize(false);
-        mRecyclerViewTasks.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mRegProgress = new ProgressDialog(this);
+
+        //mRegProgress.setTitle("");
+        mRegProgress.setMessage("Loading Events");
+        mRegProgress.setCanceledOnTouchOutside(false);
+        mRegProgress.show();
+
+        eventsList = new ArrayList<>();
+        mRecyclerViewEvents = findViewById(R.id.recyclerViewEvents);
+        mRecyclerViewEvents.setHasFixedSize(false);
+        mRecyclerViewEvents.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
 
         db = SQLiteHandler.getInstance(getApplicationContext());
         HashMap<String, String> user = db.getUserDetails();
         String uid = user.get("uid");
         String userid = user.get("userid");
-
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 //.baseUrl(getString(R.string.base_url_localhost))       //localhost
@@ -57,16 +69,18 @@ public class TasksListActivity extends AppCompatActivity {
 
         ApiClient client = retrofit.create(ApiClient.class);
 
-        Call<ArrayList<TasksofUser>> call = client.getTask("Bearer " + uid, userid);
 
-        call.enqueue(new Callback<ArrayList<TasksofUser>>() {
+        Call<ArrayList<EventsOfUser>> call4 = client.getEventsOfUser("Bearer " + uid, userid);
+
+        call4.enqueue(new Callback<ArrayList<EventsOfUser>>() {
             @Override
-            public void onResponse(Call<ArrayList<TasksofUser>> call, Response<ArrayList<TasksofUser>> response) {
+            public void onResponse(Call<ArrayList<EventsOfUser>> call, Response<ArrayList<EventsOfUser>> response) {
                 //Toast.makeText(getApplicationContext(),"OK " + response.body().get(0).getName(), Toast.LENGTH_LONG).show();
-                tasksList = response.body();
-                if (tasksList != null) {
-                    mTaskssAdapter = new TasksListAdapter(tasksList, getApplicationContext());
-                    mRecyclerViewTasks.setAdapter(mTaskssAdapter);
+                eventsList = response.body();
+                mRegProgress.dismiss();
+                if (eventsList != null) {
+                    mEventsAdapter = new EventListAdapter(eventsList, getApplicationContext());
+                    mRecyclerViewEvents.setAdapter(mEventsAdapter);
                     // Toast.makeText(getApplicationContext(),groupMembersList.get(0).getName(), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "No group members to show", Toast.LENGTH_LONG).show();
@@ -76,13 +90,10 @@ public class TasksListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<TasksofUser>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<EventsOfUser>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-        //Toast.makeText(getApplicationContext(),groupMembersList.get(0).getName(), Toast.LENGTH_LONG).show();
-
 
     }
 
@@ -102,5 +113,4 @@ public class TasksListActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

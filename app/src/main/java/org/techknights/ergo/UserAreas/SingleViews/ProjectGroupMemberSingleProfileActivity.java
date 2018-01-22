@@ -1,13 +1,10 @@
-package org.techknights.ergo.UserAreas;
+package org.techknights.ergo.UserAreas.SingleViews;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,11 +14,12 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import org.techknights.ergo.Login.activity.RegisterActivity;
 import org.techknights.ergo.Login.helper.SQLiteHandler;
 import org.techknights.ergo.R;
 import org.techknights.ergo.Retrofit.ApiClient;
-import org.techknights.ergo.Retrofit.ProfileData;
+import org.techknights.ergo.Retrofit.SingleViews.ProfileData;
+import org.techknights.ergo.UserAreas.ExtraActivities.CallActivity;
+import org.techknights.ergo.UserAreas.ExtraActivities.SendSMSActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +47,7 @@ public class ProjectGroupMemberSingleProfileActivity extends AppCompatActivity {
     private Button mProfileSendSmsbtn1;
     private Button mProfileCallbtn1;
     private Button mProfileEmailbtn1;
+    private ProgressDialog mRegProgress;
 
     public String PhoneNumber;
 
@@ -57,7 +56,14 @@ public class ProjectGroupMemberSingleProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_group_member_single_profile);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mRegProgress = new ProgressDialog(this);
+
+        //mRegProgress.setTitle("");
+        mRegProgress.setMessage("Loading Profile");
+        mRegProgress.setCanceledOnTouchOutside(false);
+        mRegProgress.show();
 
 
         mProfileImageView1 = (ImageView) findViewById(R.id.ivContactItem1);
@@ -93,6 +99,9 @@ public class ProjectGroupMemberSingleProfileActivity extends AppCompatActivity {
 
                 //Toast.makeText(getApplicationContext(),"OK " + response.body().get(0).getName(), Toast.LENGTH_LONG).show();
                 profileDataList = response.body();
+
+                mRegProgress.dismiss();
+
                 if (profileDataList != null) {
                     mProfileName1.setText(profileDataList.get(0).getName());
                     mProfileEmail1.setText(profileDataList.get(0).getEmail());

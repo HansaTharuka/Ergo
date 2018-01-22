@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
@@ -49,12 +50,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
-                        android:text="Task"
+                        android:text="Project"
                         android:textSize="25dp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/taskname1"
+                        android:id="@+id/projectname1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -96,89 +97,89 @@
                     android:layout_marginRight="100dp"
                     android:src="@drawable/ic_art_track_black_24dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tasklable"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:text="Description"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/taskdiscription1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:text="Description"
-                    android:textSize="25dp" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tasklable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="Category"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
 
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardViewHome4A"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/cardViewHome1A"
-            android:layout_alignRight="@+id/cardViewHome1A"
-            android:layout_alignStart="@+id/cardViewHome1A"
-            android:layout_below="@+id/cardViewHome2A"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            tools:ignore="UnknownId">
-
-
-            <LinearLayout
-                android:id="@+id/linearLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-
-                <ImageView
-                    android:id="@+id/singleGroupmemberProfile3"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="11dp"
-                    android:layout_marginRight="100dp"
-                    android:src="@drawable/ic_attachment_black_24dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tasklable3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:text="Status"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/taskstatus1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="task status"
-                    android:textSize="25dp"
-                    tools:ignore="DuplicateIds" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/projectcatagory1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="Description"
+                        android:textSize="25dp" />
+                </LinearLayout>
 
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
+
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:id="@+id/cardViewHome4"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignLeft="@+id/cardViewHome1"-->
+            <!--android:layout_alignRight="@+id/cardViewHome1"-->
+            <!--android:layout_alignStart="@+id/cardViewHome1"-->
+            <!--android:layout_below="@+id/cardViewHome2"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/linearLayout"-->
+            <!--tools:ignore="UnknownId">-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/linearLayout3"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="10dp">-->
+
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/singleGroupmemberProfile3"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="60dp"-->
+                    <!--android:layout_alignParentEnd="true"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginEnd="11dp"-->
+                    <!--android:layout_marginRight="100dp"-->
+                    <!--android:src="@drawable/ic_attachment_black_24dp" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tasklable3"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="0dp"-->
+                        <!--android:text="Status"-->
+                        <!--android:textSize="25dp"-->
+                        <!--android:textStyle="bold" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/projectdiscription1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="task status"-->
+                        <!--android:textSize="25dp"-->
+                        <!--tools:ignore="DuplicateIds" />-->
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+
+        <!--</android.support.v7.widget.CardView>-->
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardViewHome5A"
@@ -187,7 +188,7 @@
             android:layout_alignLeft="@+id/cardViewHome1A"
             android:layout_alignRight="@+id/cardViewHome1A"
             android:layout_alignStart="@+id/cardViewHome1A"
-            android:layout_below="@+id/cardViewHome4A"
+            android:layout_below="@+id/cardViewHome2A"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             tools:ignore="UnknownId">
 
@@ -211,28 +212,28 @@
                     android:src="@drawable/ic_event_available_black_24dp" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tasklable4"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:text="Start date"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/taskstartdate1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="start date"
-                    android:textSize="25dp"
-                    tools:ignore="DuplicateIds" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tasklable4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="Start date"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/projectstartdate1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="start date"
+                        android:textSize="25dp"
+                        tools:ignore="DuplicateIds" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -269,28 +270,28 @@
                     android:layout_marginRight="100dp"
                     android:src="@drawable/ic_event_busy_black_24dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/tasklable3"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:text="Enad date"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tasklable3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="Enad date"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/taskenddate1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="task end date"
-                    android:textSize="25dp"
-                    tools:ignore="DuplicateIds" />
+                    <TextView
+                        android:id="@+id/projectenddate1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="task end date"
+                        android:textSize="25dp"
+                        tools:ignore="DuplicateIds" />
 
-            </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -300,3 +301,4 @@
     </RelativeLayout>
 
 </ScrollView>
+

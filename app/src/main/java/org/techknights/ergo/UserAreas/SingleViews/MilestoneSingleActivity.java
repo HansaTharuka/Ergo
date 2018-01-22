@@ -1,21 +1,18 @@
-package org.techknights.ergo.UserAreas;
+package org.techknights.ergo.UserAreas.SingleViews;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import org.techknights.ergo.Login.helper.SQLiteHandler;
 import org.techknights.ergo.R;
 import org.techknights.ergo.Retrofit.ApiClient;
-import org.techknights.ergo.Retrofit.ProfileData;
-import org.techknights.ergo.Retrofit.TaskData;
-import org.techknights.ergo.Retrofit.TasksofUser;
+import org.techknights.ergo.Retrofit.SingleViews.EventData;
+import org.techknights.ergo.Retrofit.SingleViews.MilestoneData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,38 +24,45 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TaskSingleActivity extends AppCompatActivity {
+public class MilestoneSingleActivity extends AppCompatActivity {
 
-    private List<TaskData> taskDataList;
+
+    private List<MilestoneData> milestoneDataList;
     private SQLiteHandler db;
 
-    private TextView mTaskName1;
-    private TextView mTaskDiscription1;
-    private TextView mTaskStatus1;
-    private TextView mTaskStartDate1;
-    private TextView mTaskEndDate1;
+    private TextView mMilestoneName1;
+    private TextView mMilestoneStartDate1;
+    private TextView mMilestoneEndDate1;
+    private ProgressDialog mRegProgress;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_single);
+        setContentView(R.layout.activity_milestone_single);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mTaskName1 = (TextView) findViewById(R.id.taskname1);
-        mTaskDiscription1 = (TextView) findViewById(R.id.taskdiscription1);
-        mTaskStatus1 = (TextView) findViewById(R.id.taskstatus1);
-        mTaskStartDate1 = (TextView) findViewById(R.id.taskstartdate1);
-        mTaskEndDate1 = (TextView) findViewById(R.id.taskenddate1);
-        taskDataList = new ArrayList<>();
+        mRegProgress = new ProgressDialog(this);
+
+        //mRegProgress.setTitle("");
+        mRegProgress.setMessage("Loading Milestone Details");
+        mRegProgress.setCanceledOnTouchOutside(false);
+        mRegProgress.show();
+
+        mMilestoneName1 = (TextView) findViewById(R.id.milestonename1);
+        mMilestoneStartDate1 = (TextView) findViewById(R.id.milestonestartdate1);
+        mMilestoneEndDate1 = (TextView) findViewById(R.id.milestoneenddate1);
+        milestoneDataList = new ArrayList<>();
+
+
         db = SQLiteHandler.getInstance(getApplicationContext());
         HashMap<String, String> user = db.getUserDetails();
         String uid = user.get("uid"); //this is important for get user detail loged user token
 
-        Intent intent = getIntent();
-        String taskidfrommemberList = intent.getStringExtra("TaskId");
 
-        Toast.makeText(getApplicationContext(),""+taskidfrommemberList, Toast.LENGTH_LONG).show();
+        Intent intent = getIntent();
+        String milestoneidfrommemberList = intent.getStringExtra("MilestoneId");
+
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl("https://kinna.000webhostapp.com/")
                 .addConverterFactory(GsonConverterFactory.create());
@@ -67,32 +71,35 @@ public class TaskSingleActivity extends AppCompatActivity {
 
         ApiClient client = retrofit.create(ApiClient.class);
 
-        Call<ArrayList<TaskData>> call3 = client.getTaskData("Bearer " + uid, taskidfrommemberList);
+        Call<ArrayList<MilestoneData>> call3 = client.getMilestoneData("Bearer " + uid, milestoneidfrommemberList);
 
-        call3.enqueue(new Callback<ArrayList<TaskData>>() {
+        call3.enqueue(new Callback<ArrayList<MilestoneData>>() {
             @Override
-            public void onResponse(Call<ArrayList<TaskData>> call, Response<ArrayList<TaskData>> response) {
+            public void onResponse(Call<ArrayList<MilestoneData>> call, Response<ArrayList<MilestoneData>> response) {
                 //Toast.makeText(getApplicationContext(),"OK " + response.body().get(0).getName(), Toast.LENGTH_LONG).show();
-                taskDataList = response.body();
-                if (taskDataList != null) {
-                    mTaskName1.setText(taskDataList.get(0).getName());
-                    mTaskDiscription1.setText(taskDataList.get(0).getDescription());
-                    mTaskStatus1.setText(taskDataList.get(0).getStatus());
-                    mTaskStartDate1.setText(taskDataList.get(0).getStart_date());
-                    mTaskEndDate1.setText(taskDataList.get(0).getEnd_date());
-                     // Toast.makeText(getApplicationContext(),taskDataList.get(0).getName(), Toast.LENGTH_LONG).show();
+                milestoneDataList = response.body();
+
+                mRegProgress.dismiss();
+
+                if (milestoneDataList != null) {
+                    mMilestoneName1.setText(milestoneDataList.get(0).getDescription());
+                    mMilestoneStartDate1.setText(milestoneDataList.get(0).getStart_date());
+                    mMilestoneEndDate1.setText(milestoneDataList.get(0).getEnd_date());
+//                    Toast.makeText(getApplicationContext(),"hello"+eventDataList.get(0).getDescription(), Toast.LENGTH_LONG)
+//                            .show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "No group members to show", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "No Events to show", Toast.LENGTH_LONG).show();
 
                 }
 
             }
 
             @Override
-            public void onFailure(Call<ArrayList<TaskData>> call3, Throwable t) {
+            public void onFailure(Call<ArrayList<MilestoneData>> call3, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
     @Override
@@ -111,5 +118,4 @@ public class TaskSingleActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

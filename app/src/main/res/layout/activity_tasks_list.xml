@@ -8,7 +8,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
 
-    tools:context="org.techknights.ergo.UserAreas.TasksListActivity">
+    tools:context="org.techknights.ergo.UserAreas.Lists.TasksListActivity">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

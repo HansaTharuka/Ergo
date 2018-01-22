@@ -1,22 +1,21 @@
-package org.techknights.ergo.Retrofit;
+package org.techknights.ergo.Retrofit.ListViews;
 
 /**
  * Created by Hansa on 1/21/2018.
  */
 
-public class TasksofUser {
+public class ProjectOfUser {
+
     String id;
     String name;
-    String description;
-    String status;
+    String category;
     String start_date;
     String end_date;
 
-    public TasksofUser( String name, String description, String status, String start_date, String end_date) {
+    public ProjectOfUser(String id, String name, String category, String start_date, String end_date) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.status = status;
+        this.category = category;
         this.start_date = start_date;
         this.end_date = end_date;
     }
@@ -29,12 +28,8 @@ public class TasksofUser {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getStatus() {
-        return status;
+    public String getCategory() {
+        return category;
     }
 
     public String getStart_date() {

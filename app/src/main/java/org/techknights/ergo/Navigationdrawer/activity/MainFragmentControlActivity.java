@@ -116,8 +116,15 @@ public class MainFragmentControlActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+
+                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.morasquad.ergochat");
+                if (launchIntent != null) {
+                    startActivity(launchIntent);//null pointer check in case package name was not found
+                }else{
+                    Snackbar.make(view, "Please Install The ErgoChat App", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
 

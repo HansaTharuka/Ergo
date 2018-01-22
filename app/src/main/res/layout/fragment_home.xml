@@ -6,13 +6,13 @@
     android:orientation="horizontal">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cardViewHome1A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/cardViewHome1">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp"
-            >
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/peopleCountTextView1"
@@ -53,13 +52,13 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-    android:id="@+id/cardViewHome2"
+    android:id="@+id/cardViewHome2A"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_alignStart="@+id/cardViewHome1"
-    android:layout_below="@+id/cardViewHome1"
+    android:layout_alignStart="@+id/cardViewHome1A"
+    android:layout_below="@+id/cardViewHome1A"
     app:layout_constraintStart_toStartOf="@+id/linearLayout"
-    android:layout_alignLeft="@+id/cardViewHome1"
+    android:layout_alignLeft="@+id/cardViewHome1A"
     tools:ignore="UnknownId">
 
 
@@ -98,14 +97,16 @@
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
+
     <android.support.v7.widget.CardView
-        android:id="@+id/cardViewHome3"
+        android:id="@+id/cardViewHome3A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/cardViewHome1"
-        android:layout_below="@+id/cardViewHome2"
+        android:layout_alignLeft="@+id/cardViewHome1A"
+        android:layout_alignStart="@+id/cardViewHome1A"
+        android:layout_below="@+id/cardViewHome2A"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        android:layout_alignLeft="@+id/cardViewHome1"
         tools:ignore="UnknownId">
 
 
@@ -118,33 +119,132 @@
             tools:ignore="DuplicateIds">
 
             <TextView
-                android:id="@+id/taskCountTextView"
+                android:id="@+id/projectCountTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="25dp" />
 
             <TextView
-                android:id="@+id/tasklable"
+                android:id="@+id/projectlable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Task"
+                android:text="Projects"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
 
             <ImageView
-                android:id="@+id/imageViewTaskBar"
+                android:id="@+id/imageViewProjectBar"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_marginLeft="100dp"
-                android:src="@drawable/ic_done_all_black_24dp" />
+                android:layout_marginLeft="60dp"
+                android:src="@drawable/ic_inbox_color_24px" />
 
 
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewHome4A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cardViewHome1A"
+        android:layout_alignStart="@+id/cardViewHome1A"
+        android:layout_below="@+id/cardViewHome3A"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        tools:ignore="UnknownId">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            tools:ignore="DuplicateIds">
+
+            <TextView
+                android:id="@+id/eventCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/eventlable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Events"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/imageVieweventtBar"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="80dp"
+                android:src="@drawable/ic_today_colour_24px" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewHome5A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cardViewHome1A"
+        android:layout_alignStart="@+id/cardViewHome1A"
+        android:layout_below="@+id/cardViewHome4A"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        tools:ignore="UnknownId">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            tools:ignore="DuplicateIds">
+
+            <TextView
+                android:id="@+id/milestoneCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/milestonelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:text="Milestones"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/imageViewmilestoneBar"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/ic_album_colour_24px" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 
 
 

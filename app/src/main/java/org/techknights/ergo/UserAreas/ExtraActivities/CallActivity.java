@@ -1,4 +1,4 @@
-package org.techknights.ergo.UserAreas;
+package org.techknights.ergo.UserAreas.ExtraActivities;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;

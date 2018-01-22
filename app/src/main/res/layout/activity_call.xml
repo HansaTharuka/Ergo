@@ -7,7 +7,7 @@
     android:id="@+id/idLayout"
     android:layout_marginTop="?attr/actionBarSize"
     android:orientation="vertical"
-    tools:context="org.techknights.ergo.UserAreas.SendSMSActivity">
+    tools:context="org.techknights.ergo.UserAreas.ExtraActivities.SendSMSActivity">
 
     <EditText
         android:layout_width="match_parent"

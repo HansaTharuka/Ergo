@@ -1,4 +1,4 @@
-package org.techknights.ergo.Retrofit;
+package org.techknights.ergo.Retrofit.SingleViews;
 
 /**
  * Created by Hansa on 1/20/2018.

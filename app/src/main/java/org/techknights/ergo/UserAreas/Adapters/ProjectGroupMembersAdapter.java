@@ -1,4 +1,4 @@
-package org.techknights.ergo.UserAreas;
+package org.techknights.ergo.UserAreas.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.techknights.ergo.Navigationdrawer.other.CircleTransform;
 import org.techknights.ergo.R;
-import org.techknights.ergo.Retrofit.GroupMembers;
+import org.techknights.ergo.Retrofit.ListViews.GroupMembers;
+import org.techknights.ergo.UserAreas.SingleViews.ProjectGroupMemberSingleProfileActivity;
 
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class ProjectGroupMembersAdapter extends RecyclerView.Adapter<ProjectGrou
                 Intent intent = new Intent(view.getContext(),ProjectGroupMemberSingleProfileActivity.class);
                 intent.putExtra("memberId", groupMember.getId());
                 view.getContext().startActivity(intent);
-                Toast.makeText(context,"Loading "+groupMember.getName()+"'s Profile",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,"Loading "+groupMember.getName()+"'s Profile",Toast.LENGTH_SHORT).show();
 
             }
         });

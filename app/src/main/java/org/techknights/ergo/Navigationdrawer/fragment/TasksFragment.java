@@ -16,5 +16,11 @@ import org.techknights.ergo.R;
 
 public class TasksFragment extends Fragment {
 
+
+
+
+    public TasksFragment() {
+        // Required empty public constructor
+    }
 }
 

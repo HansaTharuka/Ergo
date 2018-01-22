@@ -8,12 +8,13 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
 
-    tools:context="org.techknights.ergo.UserAreas.Lists.ProjectGroupMembersActivity">
+    tools:context="org.techknights.ergo.UserAreas.Lists.MilestoneListActivity">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerViewGroupMembers"></android.support.v7.widget.RecyclerView>
+        android:id="@+id/recyclerViewMilestones">
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
-
