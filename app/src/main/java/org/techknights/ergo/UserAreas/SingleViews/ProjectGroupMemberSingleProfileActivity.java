@@ -105,15 +105,19 @@ public class ProjectGroupMemberSingleProfileActivity extends AppCompatActivity {
                 if (profileDataList != null) {
                     mProfileName1.setText(profileDataList.get(0).getName());
                     mProfileEmail1.setText(profileDataList.get(0).getEmail());
-                    mProfileDescription1.setText(profileDataList.get(0).getProfile_pic());
+                    mProfileDescription1.setText("Hello I am Programmer");
+//                    Toast.makeText(getApplicationContext(),profileDataList.get(0).getProfile_pic().toString(), Toast.LENGTH_LONG)
+//                           .show();
                     //Picasso.with(getApplicationContext()).load(profileDataList.get(0).getProfile_pic()).into(mProfileImageView1);
-                    Picasso.with(getApplicationContext()).load("https://goo.gl/tw1p9C").into(imageOfSingleuser);
+                    Picasso.with(getApplicationContext()).load("http://dreamatico.com/data_images/people/people-8.jpg").into(imageOfSingleuser);
 
                     mProfileSendSmsbtn1.setOnClickListener(new View.OnClickListener() {
 
                         public void onClick(View view) {
                             Intent i = new Intent(getApplicationContext(), SendSMSActivity.class);
                             i.putExtra("memberPhoneNo", profileDataList.get(0).getPhone_number());
+                            i.putExtra("memberNameSent", profileDataList.get(0).getName());
+//                            Toast.makeText(getApplicationContext(),""+profileDataList.get(0).getName(), Toast.LENGTH_LONG).show();
                             startActivity(i);
                             //finish();
                         }
@@ -123,6 +127,7 @@ public class ProjectGroupMemberSingleProfileActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             Intent i = new Intent(getApplicationContext(), CallActivity.class);
                             i.putExtra("memberPhoneNo", profileDataList.get(0).getPhone_number());
+
                             startActivity(i);
                             //finish();
                         }

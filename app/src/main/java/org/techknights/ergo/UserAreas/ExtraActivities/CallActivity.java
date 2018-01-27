@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,11 +28,17 @@ public class CallActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call);
         Intent intent = getIntent();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         PhonenofrommemberList = intent.getStringExtra("memberPhoneNo");
         btn=(Button)findViewById(R.id.idbtnCall);
         numTxt=(EditText)findViewById(R.id.idNumtxt);
 
         numTxt.setText(PhonenofrommemberList);
+
+
+
+
+
     }
     public void btnCall(View v){
 
@@ -53,4 +61,22 @@ public class CallActivity extends AppCompatActivity {
     private void requestPermission(){
         ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.CALL_PHONE},1);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == android.R.id.home) {
+            // finish the activity
+            onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

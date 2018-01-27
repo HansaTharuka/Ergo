@@ -5,7 +5,7 @@
     android:id="@+id/milestone_single_layout_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground">
+    android:background="#ffff">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/milestone_single_image"
@@ -14,7 +14,7 @@
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:src="@drawable/ic_done_all_black_24px" />
+        android:src="@drawable/ic_today_colour_24px" />
 
     <TextView
         android:id="@+id/milestone_single_name"

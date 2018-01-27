@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:background="#292731"
     android:padding="@dimen/activity_horizontal_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_project_group_member_single_profile">
@@ -12,23 +13,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="197dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:padding="@dimen/activity_horizontal_margin">
 
             <ImageView
                 android:id="@+id/ivContactItem1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_done_all_black_24dp" />
+                android:src="@drawable/ic_person_24dp" />
 
             <TextView
                 android:id="@+id/tvNameprofile"
@@ -39,8 +41,10 @@
                 android:layout_toEndOf="@id/ivContactItem1"
                 android:layout_toRightOf="@id/ivContactItem1"
                 android:text="User"
+                android:textSize="30dp"
+                android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#212121" />
+                android:textColor="#ffff" />
 
             <TextView
                 android:id="@+id/textViewemail1"
@@ -48,10 +52,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tvNameprofile"
                 android:layout_alignStart="@+id/tvNameprofile"
+                android:layout_marginTop="15dp"
                 android:layout_below="@+id/tvNameprofile"
                 android:text="user@gmail.com"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="#727272" />
+                android:textColor="#ffff"
+                android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/textViewdescription1"
@@ -59,11 +65,13 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignLeft="@+id/textViewemail1"
+                android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/textViewemail1"
                 android:layout_below="@+id/ivContactItem1"
                 android:paddingTop="15sp"
-                android:text="descripfgddfdgdgdgdf"
-                android:textSize="20dp" />
+                android:text="description"
+                android:textColor="#ffff"
+                android:textSize="18dp" />
 
         </RelativeLayout>
 
@@ -71,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+
             android:padding="@dimen/activity_horizontal_margin">
 
             <Button
@@ -78,8 +87,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:text="Send SMS" />
+                android:text="Send SMS"
+                android:background="#FF4300"
+                android:textColor="#ffff"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
 
             <Button
                 android:id="@+id/callbutton1"
@@ -87,7 +101,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:text="Call" />
+                android:text="Call"
+                android:background="#FF4300"
+                android:textColor="#ffff"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
 
             <Button
                 android:id="@+id/emailbutton1"
@@ -96,7 +114,11 @@
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:onClick="btnEmailClick"
-                android:text="Send Email" />
+                android:text="Send Email"
+                android:background="#FF4300"
+                android:textColor="#ffff"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </LinearLayout>

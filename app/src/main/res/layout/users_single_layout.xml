@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground"
+    android:background="#ffff"
     android:id="@+id/user_single_layout_item">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -39,16 +39,16 @@
             android:layout_marginTop="10dp"
             android:text="User default Status" />
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/singleGroupmemberProfile"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/group_member_single_name"
-            android:layout_marginEnd="11dp"
-            android:layout_marginRight="11dp"
-            android:src="@drawable/ic_account_box_black_24dp" />
+        <!--<ImageView-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:id="@+id/singleGroupmemberProfile"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignTop="@+id/group_member_single_name"-->
+            <!--android:layout_marginEnd="11dp"-->
+            <!--android:layout_marginRight="11dp"-->
+            <!--android:src="@drawable/ic_account_box_black_24dp" />-->
 
 
 </RelativeLayout>

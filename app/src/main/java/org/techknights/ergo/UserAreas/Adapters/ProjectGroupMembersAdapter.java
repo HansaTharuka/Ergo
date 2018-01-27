@@ -47,7 +47,9 @@ public class ProjectGroupMembersAdapter extends RecyclerView.Adapter<ProjectGrou
     public void onBindViewHolder(ViewHolder holder, int position) {
         final GroupMembers groupMember = groupMembersList.get(position);
 //""+groupMember.getProfile_pic()
+       // Toast.makeText(context,groupMember.getProfile_pic().toString(),Toast.LENGTH_SHORT).show();
         Glide.with(context).load(groupMember.getProfile_pic().toString())
+                //groupMember.getProfile_pic().toString()
                 .crossFade()
                 .thumbnail(0.5f)
                 .bitmapTransform(new CircleTransform(context))
@@ -56,6 +58,7 @@ public class ProjectGroupMembersAdapter extends RecyclerView.Adapter<ProjectGrou
 
         holder.tvName.setText(groupMember.getName().toString());
         holder.tvEmail.setText(groupMember.getEmail().toString());
+        //Toast.makeText(context,groupMember.getProfile_pic().toString(),Toast.LENGTH_SHORT).show();
 
 
         holder.rlUserSingle.setOnClickListener(new View.OnClickListener() {

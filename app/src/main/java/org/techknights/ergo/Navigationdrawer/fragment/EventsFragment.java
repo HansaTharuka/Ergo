@@ -17,6 +17,7 @@ import android.widget.Toast;
 import org.techknights.ergo.Login.helper.SQLiteHandler;
 import org.techknights.ergo.R;
 import org.techknights.ergo.Retrofit.ApiClient;
+import org.techknights.ergo.Retrofit.ListViews.EventsOfUser;
 import org.techknights.ergo.Retrofit.ListViews.GroupMembers;
 import org.techknights.ergo.Retrofit.SingleViews.EventData;
 
@@ -38,7 +39,7 @@ public class EventsFragment extends Fragment {
     private ProgressDialog mRegProgress;
     private SQLiteHandler db;
 
-    private List<EventData> eventDataList;
+    private List<EventsOfUser> userEventList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class EventsFragment extends Fragment {
         mRegProgress.setMessage("Loading Your Data");
         mRegProgress.setCanceledOnTouchOutside(false);
         mRegProgress.show();
-        eventDataList = new ArrayList();
+        userEventList = new ArrayList();
 
         db = SQLiteHandler.getInstance(this.getActivity());
         HashMap<String, String> user = db.getUserDetails();
@@ -71,20 +72,21 @@ public class EventsFragment extends Fragment {
         ApiClient client = retrofit.create(ApiClient.class);
 
 
-        Call<ArrayList<EventData>> call = client.getEventData("Bearer " + uid, userid);
-        call.enqueue(new Callback<ArrayList<EventData>>()
+        Call<ArrayList<EventsOfUser>> call = client.getEventsOfUser("Bearer " + uid, userid);
+        call.enqueue(new Callback<ArrayList<EventsOfUser>>()
 
         {
             @Override
             public void onResponse
-                    (Call<ArrayList<EventData>> call, Response<ArrayList<EventData>> response) {
+                    (Call<ArrayList<EventsOfUser>> call, Response<ArrayList<EventsOfUser>> response) {
                 // Toast.makeText(getContext(),"OK " + response.body().get(0).getName(), Toast.LENGTH_LONG).show();
-                eventDataList = response.body();
+                userEventList = response.body();
+
                 mRegProgress.dismiss();
-                if (eventDataList != null) {
-                    mDescription.setText(eventDataList.get(0).getDescription());
-                    mStart_date.setText(eventDataList.get(0).getStart_date());
-                    mEnd_date.setText(eventDataList.get(0).getEnd_date());
+                if (userEventList != null && userEventList.size() >0) {
+                    mDescription.setText(userEventList.get(userEventList.size()-1).getDescription());
+                    mStart_date.setText(userEventList.get(userEventList.size()-1).getStart_date());
+                    mEnd_date.setText(userEventList.get(userEventList.size()-1).getEnd_date());
 
                 } else {
 
@@ -95,7 +97,7 @@ public class EventsFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<EventData>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<EventsOfUser>> call, Throwable t) {
                 Toast.makeText(getContext(), "Error " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

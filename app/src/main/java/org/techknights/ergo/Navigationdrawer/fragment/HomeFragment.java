@@ -194,7 +194,7 @@ public class HomeFragment extends Fragment {
                     tasksCount.setText("" + tasksList.size());
                 } else {
 
-                    Toast.makeText(getContext(), "No group members in project", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "No tasks in project", Toast.LENGTH_LONG).show();
                 }
                 //Toast.makeText(getContext(),tasksList.get(0).getName(), Toast.LENGTH_LONG).show();
                 //peopleCount.setText("" + tasksList.size());

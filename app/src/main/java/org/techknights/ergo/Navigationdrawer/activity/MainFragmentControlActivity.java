@@ -53,15 +53,15 @@ public class MainFragmentControlActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private FloatingActionButton fab;
 
+
     private SQLiteHandler db;
     private SessionManager session;
 
 
-
     // urls to load navigation header background image
     // and profile image
-    private static final String urlNavHeaderBg = "https://hansatharukarcg3.000webhostapp.com/cover.jpg";
-    private static final String urlProfileImg = "https://hansatharukarcg3.000webhostapp.com/pp.jpg";
+    private static final String urlNavHeaderBg = "https://goo.gl/iaD7tZ";
+    private static final String urlProfileImg = "https://goo.gl/yGvnbp";
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -94,7 +94,7 @@ public class MainFragmentControlActivity extends AppCompatActivity {
 
 
         // SqLite database handler
-        db =  SQLiteHandler.getInstance(getApplicationContext());
+        db = SQLiteHandler.getInstance(getApplicationContext());
 
         // session manager
         session = new SessionManager(getApplicationContext());
@@ -102,6 +102,9 @@ public class MainFragmentControlActivity extends AppCompatActivity {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+       // notificationdiscriptionsinglehead = (TextView) findViewById(R.id.notificationdiscriptionsinglehead);
+       // notificationsdiscriptionsingle1 = (TextView) findViewById(R.id.notificationsdiscriptionsingle1);
+     //  notificationsstartdatesingle1 = (TextView) findViewById(R.id.notificationdiscriptionsinglehead);
 
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
@@ -109,6 +112,7 @@ public class MainFragmentControlActivity extends AppCompatActivity {
         txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+
 
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
@@ -121,7 +125,7 @@ public class MainFragmentControlActivity extends AppCompatActivity {
                 Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.morasquad.ergochat");
                 if (launchIntent != null) {
                     startActivity(launchIntent);//null pointer check in case package name was not found
-                }else{
+                } else {
                     Snackbar.make(view, "Please Install The ErgoChat App", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
@@ -150,7 +154,7 @@ public class MainFragmentControlActivity extends AppCompatActivity {
     private void loadNavHeader() {
 
         // Fetching user details from SQLite
-        db =  SQLiteHandler.getInstance(getApplicationContext());
+        db = SQLiteHandler.getInstance(getApplicationContext());
         HashMap<String, String> user = db.getUserDetails();
 
         // name, website
@@ -420,16 +424,22 @@ public class MainFragmentControlActivity extends AppCompatActivity {
 
         // user is in notifications fragment
         // and selected 'Mark all as Read'
-        if (id == R.id.action_mark_all_read) {
-            Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
-        }
+//        if (id == R.id.action_mark_all_read) {
+//            Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
+//        }
 
         // user is in notifications fragment
         // and selected 'Clear All'
-        if (id == R.id.action_clear_notifications) {
-            Toast.makeText(getApplicationContext(), "Clear all notifications!", Toast.LENGTH_LONG).show();
 
-        }
+//        if (id == R.id.action_clear_notifications) {
+//
+//
+////            notificationsdiscriptionsingle1.setText(" ");
+////           notificationsstartdatesingle1.setText(" ");
+//
+//            Toast.makeText(getApplicationContext(), "Cleared all notifications!", Toast.LENGTH_LONG).show();
+//
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -441,6 +451,7 @@ public class MainFragmentControlActivity extends AppCompatActivity {
         else
             fab.hide();
     }
+
     private void logoutUser() {
         session.setLogin(false);
 
@@ -451,7 +462,6 @@ public class MainFragmentControlActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
 
 }

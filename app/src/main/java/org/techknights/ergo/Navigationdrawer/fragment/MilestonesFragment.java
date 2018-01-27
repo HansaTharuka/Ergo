@@ -4,6 +4,7 @@ package org.techknights.ergo.Navigationdrawer.fragment;
  * Created by Hansa on 1/14/2018.
  */
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,103 +12,99 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import org.techknights.ergo.Login.helper.SQLiteHandler;
 import org.techknights.ergo.R;
+import org.techknights.ergo.Retrofit.ApiClient;
+import org.techknights.ergo.Retrofit.ListViews.EventsOfUser;
+import org.techknights.ergo.Retrofit.ListViews.MilestonesOfUser;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MilestonesFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MilestonesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MilestonesFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private TextView mDescription;
+    private TextView mStart_date;
+    private TextView mEnd_date;
+    private ProgressDialog mRegProgress;
+    private SQLiteHandler db;
 
-    public MilestonesFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MilestonesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MilestonesFragment newInstance(String param1, String param2) {
-        MilestonesFragment fragment = new MilestonesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private List<MilestonesOfUser> milestonesList;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_milestones, container, false);
+
+
+        mRegProgress = new ProgressDialog(getContext());
+        //mRegProgress.setTitle("");
+        mRegProgress.setMessage("Loading Your Data");
+        mRegProgress.setCanceledOnTouchOutside(false);
+        mRegProgress.show();
+        milestonesList = new ArrayList();
+
+        db = SQLiteHandler.getInstance(this.getActivity());
+        HashMap<String, String> user = db.getUserDetails();
+        String uid = user.get("uid");
+        String userid = user.get("userid");
+
+        mDescription = view.findViewById(R.id.milestonesdiscriptionsingle1);
+        mStart_date= view.findViewById(R.id.milestonesstartdatesingle1);
+        mEnd_date= view.findViewById(R.id.milestonesenddatesingle1);
+
+        Retrofit.Builder builder = new Retrofit.Builder()
+                //.baseUrl(getString(R.string.base_url_localhost))       //localhost
+                .baseUrl("https://kinna.000webhostapp.com/")
+                .addConverterFactory(GsonConverterFactory.create());
+        //remote localhost
+        Retrofit retrofit = builder.build();
+
+        ApiClient client = retrofit.create(ApiClient.class);
+
+        Call<ArrayList<MilestonesOfUser>> call = client.getMilestonesOfUser("Bearer " + uid, userid);
+        call.enqueue(new Callback<ArrayList<MilestonesOfUser>>()
+
+        {
+            @Override
+            public void onResponse
+                    (Call<ArrayList<MilestonesOfUser>> call, Response<ArrayList<MilestonesOfUser>> response) {
+                // Toast.makeText(getContext(),"OK " + response.body().get(0).getName(), Toast.LENGTH_LONG).show();
+                milestonesList = response.body();
+
+                mRegProgress.dismiss();
+                if (milestonesList != null && milestonesList.size()>0) {
+                    mDescription.setText(milestonesList.get(milestonesList.size()-1).getDescription());
+                    mStart_date.setText(milestonesList.get(milestonesList.size()-1).getStart_date());
+                    mEnd_date.setText(milestonesList.get(milestonesList.size()-1).getEnd_date());
+
+                } else {
+
+                    Toast.makeText(getContext(), "No Milestones in project", Toast.LENGTH_LONG).show();
+                }
+                //Toast.makeText(getContext(),groupMembersList.get(0).getName(), Toast.LENGTH_LONG).show();
+                //peopleCount.setText("" + groupMembersList.size());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<MilestonesOfUser>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_milestones, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

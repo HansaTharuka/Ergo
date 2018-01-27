@@ -7,6 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:background="#292731"
 
     tools:context="org.techknights.ergo.UserAreas.Lists.EventListActivity">
 

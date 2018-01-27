@@ -1,8 +1,6 @@
 package org.techknights.ergo.Firebaseapp;
 
-/**
- * Created by Chathura Wijesinghe <cdanasiri@gmail.com> on 10/12/2017.
- */
+
 
 public class Config {
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#292731">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,6 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
+                        android:textColor="#000000"
                         android:text="Task"
                         android:textSize="25dp"
                         android:textStyle="bold" />
@@ -74,6 +76,8 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/cardViewHome1A"
             android:layout_alignStart="@+id/cardViewHome1A"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="15dp"
             android:layout_below="@+id/cardViewHome1A"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             tools:ignore="UnknownId">
@@ -107,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
                     android:text="Description"
+                    android:textColor="#000000"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
@@ -131,6 +136,8 @@
             android:layout_alignRight="@+id/cardViewHome1A"
             android:layout_alignStart="@+id/cardViewHome1A"
             android:layout_below="@+id/cardViewHome2A"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             tools:ignore="UnknownId">
 
@@ -164,6 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
                     android:text="Status"
+                    android:textColor="#000000"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
@@ -188,6 +196,8 @@
             android:layout_alignRight="@+id/cardViewHome1A"
             android:layout_alignStart="@+id/cardViewHome1A"
             android:layout_below="@+id/cardViewHome4A"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             tools:ignore="UnknownId">
 
@@ -221,6 +231,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
+                    android:textColor="#0c30ff"
                     android:text="Start date"
                     android:textSize="25dp"
                     android:textStyle="bold" />
@@ -246,6 +257,8 @@
             android:layout_alignRight="@+id/cardViewHome1A"
             android:layout_alignStart="@+id/cardViewHome1A"
             android:layout_below="@+id/cardViewHome5A"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             tools:ignore="UnknownId">
 
@@ -279,6 +292,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
                     android:text="Enad date"
+                    android:textColor="#ff0c14"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 

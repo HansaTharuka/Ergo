@@ -5,7 +5,7 @@
     android:id="@+id/task_single_layout_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground">
+    android:background="#ffff">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/task_single_image"

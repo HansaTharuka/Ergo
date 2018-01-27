@@ -33,7 +33,7 @@ import org.techknights.ergo.Login.helper.SQLiteHandler;
 public class LoginActivity extends Activity {
   private static final String TAG = RegisterActivity.class.getSimpleName();
   private Button btnLogin;
-  private Button btnLinkToRegister;
+  //private Button btnLinkToRegister;
   private EditText inputEmail;
   private EditText inputPassword;
   private ProgressDialog pDialog;
@@ -48,7 +48,7 @@ public class LoginActivity extends Activity {
     inputEmail = (EditText) findViewById(R.id.email);
     inputPassword = (EditText) findViewById(R.id.password);
     btnLogin = (Button) findViewById(R.id.btnLogin);
-    btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
+   // btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
 
     // Progress dialog
     pDialog = new ProgressDialog(this);
@@ -90,15 +90,15 @@ public class LoginActivity extends Activity {
     });
 
     // Link to Register Screen
-    btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
-
-      public void onClick(View view) {
-        Intent i = new Intent(getApplicationContext(),
-                RegisterActivity.class);
-        startActivity(i);
-        finish();
-      }
-    });
+//    btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
+//
+//      public void onClick(View view) {
+//        Intent i = new Intent(getApplicationContext(),
+//                RegisterActivity.class);
+//        startActivity(i);
+//        finish();
+//      }
+//    });
 
   }
 

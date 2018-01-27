@@ -7,6 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:background="@color/bg_register"
 
     tools:context="org.techknights.ergo.UserAreas.Lists.TasksListActivity">
 

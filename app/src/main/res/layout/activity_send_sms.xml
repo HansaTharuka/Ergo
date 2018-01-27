@@ -4,34 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#292731"
     android:id="@+id/idLayout"
-    android:layout_marginTop="?attr/actionBarSize"
     android:orientation="vertical"
+    android:layout_gravity="center"
     tools:context="org.techknights.ergo.UserAreas.ExtraActivities.SendSMSActivity">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/idTextPhoneNo"
-       android:gravity="start"
-        android:textSize="20sp"
-        android:hint=""
-        android:inputType="phone" />
-    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/idTextMsg"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
         android:gravity="start"
-        android:textSize="20sp"
+        android:hint=""
+        android:inputType="phone"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/idTextMsg"
+        android:layout_width="match_parent"
+        android:layout_height="272dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="start"
         android:hint="Enter Your Message"
-        android:inputType="text" />
+        android:textColorHint="#FF4300"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:textSize="20sp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Sms"
+        android:textColor="#ffff"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:background="#FF4300"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:id="@+id/idbtnStart"
         android:onClick="sendSms"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
 
 </LinearLayout>
